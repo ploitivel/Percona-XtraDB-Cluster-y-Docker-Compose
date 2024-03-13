@@ -25,6 +25,11 @@ ls ~/pxc-docker-test/cert
 #copialos al proyecto
 cp -r ls ~/pxc-docker-test/cert/ BreadcrumbsPercona-XtraDB-Cluster-y-Docker-Compose/config/cert/
 ```
+
+## Contenedor Bootstrap
+
+El contenedor de Bootstrap, también conocido como el nodo principal, juega un papel crucial en la inicialización del clúster. Este nodo es responsable de arrancar el sistema, estableciendo las bases para que los demás nodos se integren al clúster de manera secuencial.
+
 ### Compilación del Contenedor Bootstrap
 
 Para iniciar el clúster, primero necesitas compilar el contenedor bootstrap. Utiliza el siguiente comando:
@@ -37,6 +42,11 @@ Con el contenedor bootstrap compilado, el siguiente paso es iniciarlo:
 ```
 sudo docker compose up pxc-node1 -d
 ```
+
+## Nodos Secundarios
+
+Los nodos secundarios se unen al nodo principal para expandir el clúster, ejecutando tareas y mejorando el rendimiento y la disponibilidad del sistema. Facilitan la escalabilidad y aseguran una gestión eficaz de recursos.
+
 ### Iniciar Todos los Nodos
 
 Una vez el nodo bootstrap está en funcionamiento, puedes iniciar todos los nodos del clúster. 
@@ -66,5 +76,5 @@ SHOW STATUS LIKE 'wsrep%';
 ```
 ### Documentación y Recursos Adicionales
 
-Mas informacion Documentacion Offcial de percona 
+Documentacion Official de percona 
 https://docs.percona.com/percona-xtradb-cluster/8.0/docker.html
