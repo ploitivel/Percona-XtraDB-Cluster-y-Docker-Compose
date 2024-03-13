@@ -78,3 +78,12 @@ SHOW STATUS LIKE 'wsrep%';
 
 Documentacion Official de percona 
 https://docs.percona.com/percona-xtradb-cluster/8.0/docker.html
+
+# 🌌 Es hora de iluminar el universo 🌌
+
+Cada donación es como agregar una estrella en nuestro universo de proyectos.
+
+¿Nos ayudas a iluminar el cielo con más estrellas? Piensa en ello como invitarnos a un refresco en una tarde de brainstorming: refrescante, energizante y, oh, ¡tan necesario!
+
+👉 [Sé esa estrella y brilla con nosotros aquí]([https://donate.stripe.com/7sIbKicyugmgd6E289](https://donate.stripe.com/7sIbKicyugmgd6E289))
+
