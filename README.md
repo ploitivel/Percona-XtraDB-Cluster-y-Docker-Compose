@@ -85,5 +85,5 @@ Cada donación es como agregar una estrella en nuestro universo de proyectos.
 
 ¿Nos ayudas a iluminar el cielo con más estrellas? Piensa en ello como invitarnos a un refresco en una tarde de brainstorming: refrescante, energizante y, oh, ¡tan necesario!
 
-👉 [Sé esa estrella y brilla con nosotros aquí](https://donate.stripe.com/7sIbKicyugmgd6E289](https://donate.stripe.com/7sIbKicyugmgd6E289)
+👉 [Sé esa estrella y brilla con nosotros aquí](https://donate.stripe.com/7sIbKicyugmgd6E289)
 
