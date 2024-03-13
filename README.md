@@ -18,10 +18,12 @@ Antes de iniciar el clúster, es crucial generar tus propios certificados SSL pa
 mkdir -m 777 -p ~/pxc-docker-test/cert
 docker run --name pxc-cert --rm -v ~/pxc-docker-test/cert:/cert percona/percona-xtradb-cluster:8.0 mysql_ssl_rsa_setup -d /cert
 ```
-Verifica que existan con y muevelos a la carpeta config/cert de este proyecto
+Verifica que existan y muevelos a la carpeta config/cert de este proyecto
 ```
+#verfica que se ayan generado
 ls ~/pxc-docker-test/cert
-&& cp -r BreadcrumbsPercona-XtraDB-Cluster-y-Docker-Compose/config/cert
+#copialos al proyecto
+cp -r ls ~/pxc-docker-test/cert/ BreadcrumbsPercona-XtraDB-Cluster-y-Docker-Compose/config/cert/
 ```
 ### Compilación del Contenedor Bootstrap
 
@@ -38,10 +40,18 @@ sudo docker compose up pxc-node1 -d
 ### Iniciar Todos los Nodos
 
 Una vez el nodo bootstrap está en funcionamiento, puedes iniciar todos los nodos del clúster. 
-Se conectarán automáticamente a pxc-node1:
+Se conectarán automáticamente a pxc-node1 sindo el nodo Bootstrap:
 ```
 docker compose up -d
 ```
+Felicidades el cruster esta corriendo verificalo con 
+```
+docker ps 
+```
+### Agregar mas Nodos
+
+Puedes agregar mas nodos siguiendo la estructura del docker-compose-yml y siguiedo la estructura de los archivos de configuracion de cada nodo
+
 ### Acceso a la Base de Datos
 
 Para interactuar con la base de datos, accede a cualquier contenedor y utiliza el cliente MySQL:
