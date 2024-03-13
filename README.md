@@ -1,6 +1,6 @@
 # Cluster with Percona XtraDB Cluster and Docker Compose
 
-This project makes it easy to deploy a cluster using Percona XtraDB Cluster with Docker Compose, enabling efficient configuration and management of distributed databases.
+This project revolutionizes cluster deployment by integrating Percona XtraDB Cluster with Docker Compose, offering a simple yet powerful solution for distributed database management. It facilitates the deployment and management of highly available database environments, raising the performance and scalability of critical applications to optimal levels.
 
 ## Pre requirements
 
