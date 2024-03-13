@@ -82,7 +82,7 @@ https://docs.percona.com/percona-xtradb-cluster/8.0/docker.html
 
 Each donation is like adding a star in our universe of projects.
 
-Can you help us light up the sky with more stars? Think of it as treating ourselves to a drink on an afternoon of brainstorming: refreshing, energizing and, oh, so necessary!
+Can you help us light up the sky with more stars? Think of it like giving ourselves a drink on a Sunday afternoon: refreshing, energizing and, oh, so necessary.
 
 👉 [Be that star and shine with us here](https://donate.stripe.com/7sIbKicyugmgd6E289)
 
