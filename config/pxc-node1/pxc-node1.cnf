@@ -1,0 +1,29 @@
+[mysqld]
+ssl-ca = /cert/ca.pem
+ssl-cert = /cert/server-cert.pem
+ssl-key = /cert/server-key.pem
+
+server-id=1
+wsrep_cluster_name="pxc-cluster"
+
+;Esta configuración le dice al primer nodo que inicie como el nodo de bootstrap, creando un nuevo clúster. No se especifican direcciones de otros nodos porque, en este punto, el clúster aún no existe.
+;En los demas nodos que se va agregando se necesita wsrep_cluster_address=gcomm://pxc-node1 para que se conecten al nodo principal 
+wsrep_cluster_address=gcomm://
+
+wsrep_node_name="pxc-node1"
+;wsrep_node_address="direccion_ip_nodo1" ;Docker Compose, puedes omitir este parámetro y dejar que la red de Docker maneje la comunicación entre los nodos del clúster. 
+pxc_strict_mode=ENFORCING
+wsrep_sst_method=xtrabackup-v2
+
+[client]
+ssl-ca = /cert/ca.pem
+ssl-cert = /cert/client-cert.pem
+ssl-key = /cert/client-key.pem
+
+[sst]
+encrypt = 4
+ssl-ca = /cert/ca.pem
+ssl-cert = /cert/server-cert.pem
+ssl-key = /cert/server-key.pem
+
+;safe_to_bootstrap: 1

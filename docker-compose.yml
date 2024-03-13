@@ -1,0 +1,73 @@
+version: "3.8"
+
+services:
+
+      pxc-node1:
+        build:
+          context: ./config/pxc-node1/
+          dockerfile: Dockerfile
+        container_name: pxc-node1
+        environment:
+          - CLUSTER_NAME=pxc-cluster
+          - MYSQL_ROOT_PASSWORD=rootpassword
+          - XTRABACKUP_PASSWORD=backuppassword
+          - PXC_STRICT_MODE=ENFORCING
+          #- WSREP_CLUSTER_ADDRESS=gcomm://pxc-node1
+        volumes:
+          - pxc-node1-data:/var/lib/mysql
+          - pxc-node1-backup:/var/lib/pxc-backup
+          - ./config/pxc-node1/pxc-node1.cnf:/etc/percona-xtradb-cluster.conf.d/custom.cnf
+          - ./config/cert:/cert
+        networks:
+          - network-cluster
+
+      pxc-node2:
+        image: percona/percona-xtradb-cluster:8.0
+        container_name: pxc-node2
+        environment:
+          - CLUSTER_NAME=pxc-cluster
+          - MYSQL_ROOT_PASSWORD=rootpassword
+          - XTRABACKUP_PASSWORD=backuppassword
+          - PXC_STRICT_MODE=ENFORCING
+          - CLUSTER_JOIN=pxc-node1
+        volumes:
+          - pxc-node2-data:/var/lib/mysql
+          - pxc-node2-backup:/var/lib/pxc-backup
+          - ./config/pxc-node2/pxc-node2.cnf:/etc/percona-xtradb-cluster.conf.d/custom.cnf
+          - ./config/cert:/cert
+        networks:
+          - network-cluster
+        depends_on:
+          - pxc-node1
+
+      pxc-node3:
+        image: percona/percona-xtradb-cluster:8.0
+        container_name: pxc-node3
+        environment:
+          - CLUSTER_NAME=pxc-cluster
+          - MYSQL_ROOT_PASSWORD=rootpassword
+          - XTRABACKUP_PASSWORD=backuppassword
+          - PXC_STRICT_MODE=ENFORCING
+          - CLUSTER_JOIN=pxc-node1
+        volumes:
+          - pxc-node3-data:/var/lib/mysql
+          - pxc-node3-backup:/var/lib/pxc-backup
+          - ./config/pxc-node3/pxc-node3.cnf:/etc/percona-xtradb-cluster.conf.d/custom.cnf
+          - ./config/cert:/cert
+        networks:
+          - network-cluster
+        depends_on:
+          - pxc-node1
+
+
+networks:
+  network-cluster:
+    driver: bridge
+
+volumes:
+  pxc-node1-data:
+  pxc-node1-backup:
+  pxc-node2-data:
+  pxc-node2-backup:
+  pxc-node3-data:
+  pxc-node3-backup:

@@ -1,0 +1,24 @@
+[mysqld]
+ssl-ca = /cert/ca.pem
+ssl-cert = /cert/server-cert.pem
+ssl-key = /cert/server-key.pem
+
+server-id=3
+wsrep_cluster_name="pxc-cluster"
+;Docker Compose, los nombres de servicio actúan como hosts resolubles internamente, lo que simplifica la configuración.
+wsrep_cluster_address="gcomm://pxc-node1"
+wsrep_node_name="pxc-node3"
+;wsrep_node_address="direccion_ip_nodo3" ;Docker Compose, puedes omitir este parámetro y dejar que la red de Docker maneje la comunicación entre los nodos del clúster. 
+pxc_strict_mode=ENFORCING
+wsrep_sst_method=xtrabackup-v2
+
+[client]
+ssl-ca = /cert/ca.pem
+ssl-cert = /cert/client-cert.pem
+ssl-key = /cert/client-key.pem
+
+[sst]
+encrypt = 4
+ssl-ca = /cert/ca.pem
+ssl-cert = /cert/server-cert.pem
+ssl-key = /cert/server-key.pem
